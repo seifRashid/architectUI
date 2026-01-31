@@ -17,7 +17,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="aspect-[16/9] relative overflow-hidden"
+            className="aspect-[3/4] sm:aspect-[4/3] md:aspect-[16/9] min-h-[500px] md:min-h-[600px] lg:min-h-[700px] relative overflow-hidden"
           >
             <Image
               src="/assets/project1.png"
@@ -25,22 +25,23 @@ export default function Portfolio() {
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:via-black/40 transition-all duration-500" />
             
-            <div className="absolute bottom-10 left-10 text-white max-w-lg transition-transform duration-500 group-hover:-translate-y-4">
-              <span className="text-xs uppercase tracking-widest bg-accent px-3 py-1 mb-4 inline-block font-semibold">
+            <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 text-white max-w-lg transition-transform duration-500 group-hover:-translate-y-4">
+              <span className="text-[10px] md:text-xs uppercase tracking-widest bg-accent px-3 py-1 mb-4 inline-block font-bold">
                 Residential Concept
               </span>
-              <h3 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              <h3 className="text-3xl md:text-5xl font-serif font-bold mb-4 leading-tight">
                 Private Residence Concept
               </h3>
-              <p className="text-white/80 font-light text-lg">
+              <p className="text-white/80 font-light text-base md:text-lg">
                 A modern residential concept focused on natural light, 
                 cross-ventilation, and material honesty.
               </p>
             </div>
           </motion.div>
         </div>
+
 
         <div className="mt-16 text-center">
           <motion.a
