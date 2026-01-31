@@ -9,6 +9,7 @@ import {
   ClipboardCheck, 
   PencilRuler 
 } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 const services = [
   {
@@ -45,33 +46,39 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 md:py-40 bg-muted/30">
+    <section id="services" className="py-24 md:py-40 bg-muted/30 border-b border-border">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-xl">
-            <h2 className="text-sm uppercase tracking-[0.3em] font-medium text-accent mb-6">
-              Our Expertise
-            </h2>
-            <h3 className="text-4xl md:text-5xl font-serif font-bold">
-              Comprehensive architectural services for the modern world.
-            </h3>
+        <ScrollReveal direction="right">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-xl">
+              <h2 className="text-sm uppercase tracking-[0.3em] font-medium text-accent mb-6">
+                Our Expertise
+              </h2>
+              <h3 className="text-4xl md:text-5xl font-serif font-bold">
+                Comprehensive architectural services for the modern world.
+              </h3>
+            </div>
+            <a
+              href="#contact"
+              className="text-sm font-semibold uppercase tracking-widest border-b-2 border-accent pb-1 hover:text-accent transition-colors"
+            >
+              Explore All Services →
+            </a>
           </div>
-          <a
-            href="#contact"
-            className="text-sm font-semibold uppercase tracking-widest border-b-2 border-accent pb-1 hover:text-accent transition-colors"
-          >
-            Explore All Services →
-          </a>
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: index * 0.15,
+                ease: [0.21, 0.47, 0.32, 0.98] 
+              }}
               whileHover={{ y: -10 }}
               className="bg-background p-10 border border-border group transition-all hover:border-accent hover:shadow-2xl hover:shadow-accent/5"
             >
