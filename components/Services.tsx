@@ -10,6 +10,7 @@ import {
   PencilRuler 
 } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
+import { MagicCard } from "./ui/magic-card";
 
 const services = [
   {
@@ -79,16 +80,22 @@ export default function Services() {
                 delay: index * 0.15,
                 ease: [0.21, 0.47, 0.32, 0.98] 
               }}
-              whileHover={{ y: -10 }}
-              className="bg-background p-10 border border-border group transition-all hover:border-accent hover:shadow-2xl hover:shadow-accent/5"
             >
-              <div className="w-12 h-12 bg-muted flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-colors">
-                <service.icon size={24} strokeWidth={1.5} />
-              </div>
-              <h4 className="text-xl font-serif font-bold mb-4">{service.title}</h4>
-              <p className="text-foreground/60 font-light leading-relaxed">
-                {service.description}
-              </p>
+              <MagicCard 
+                className="p-10 border border-border group transition-all hover:border-accent hover:shadow-2xl hover:shadow-accent/5 h-full cursor-default"
+                gradientColor="rgba(196, 164, 132, 0.05)"
+                gradientFrom="#c4a484"
+                gradientTo="#8d6e63"
+                gradientOpacity={0.4}
+              >
+                <div className="w-12 h-12 bg-muted flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-white transition-colors">
+                  <service.icon size={24} strokeWidth={1.5} />
+                </div>
+                <h4 className="text-xl font-serif font-bold mb-4">{service.title}</h4>
+                <p className="text-foreground/60 font-light leading-relaxed">
+                  {service.description}
+                </p>
+              </MagicCard>
             </motion.div>
           ))}
         </div>
