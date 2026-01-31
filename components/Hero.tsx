@@ -88,7 +88,7 @@ export default function Hero() {
             </Button>
             <Button
               variant="outline"
-              className="border-white text-white hover:bg-white hover:text-black px-10 py-7 text-sm uppercase tracking-widest font-bold rounded-none transition-all"
+              className="border-black dark:border-white text-black dark:text-white hover:bg-white hover:text-black px-10 py-7 text-sm uppercase tracking-widest font-bold rounded-none transition-all"
             >
               Our Philosophy
             </Button>

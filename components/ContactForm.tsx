@@ -20,6 +20,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollReveal } from "./ScrollReveal";
 
+import { MagicCard } from "./ui/magic-card";
+
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -84,7 +86,12 @@ export function ContactForm() {
               <div className="w-20 h-1 bg-accent mx-auto" />
             </div>
 
-            <div className="bg-muted/30 p-8 md:p-12 border border-border">
+            <MagicCard 
+              className="p-8 md:p-12 border border-border bg-muted/5 shadow-2xl"
+              gradientColor="rgba(196, 164, 132, 0.1)"
+              gradientFrom="#c4a484"
+              gradientTo="#8d6e63"
+            >
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -167,7 +174,7 @@ export function ContactForm() {
                   </div>
                 </form>
               </Form>
-            </div>
+            </MagicCard>
           </div>
         </ScrollReveal>
       </div>
