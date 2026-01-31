@@ -47,18 +47,13 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      // Note: You may need a Formspree ID for AJAX submissions.
-      // Replacing with a generic fetch for demo/actual use.
-      const response = await fetch("https://formspree.io/f/xlgpwayz", {
+      const response = await fetch("https://formspree.io/rseif1218@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          ...values,
-          _to: "rseif1218@gmail.com",
-        }),
+        body: JSON.stringify(values),
       });
 
       if (response.ok) {
