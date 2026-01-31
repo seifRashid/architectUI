@@ -17,6 +17,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -30,6 +34,7 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,10 +44,35 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    alert("Thank you for your message. We will get back to you soon!");
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      // Note: You may need a Formspree ID for AJAX submissions.
+      // Replacing with a generic fetch for demo/actual use.
+      const response = await fetch("https://formspree.io/f/xlgpwayz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          _to: "rseif1218@gmail.com",
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent successfully! We'll get back to you soon.");
+        form.reset();
+      } else {
+        throw new Error("Failed to send message.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -86,7 +116,8 @@ export function ContactForm() {
                         <FormControl>
                           <Input
                             placeholder="John Doe"
-                            className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors py-6 text-lg"
+                            disabled={isSubmitting}
+                            className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors py-6 text-lg disabled:opacity-50"
                             {...field}
                           />
                         </FormControl>
@@ -105,7 +136,8 @@ export function ContactForm() {
                         <FormControl>
                           <Input
                             placeholder="john@example.com"
-                            className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors py-6 text-lg"
+                            disabled={isSubmitting}
+                            className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors py-6 text-lg disabled:opacity-50"
                             {...field}
                           />
                         </FormControl>
@@ -125,7 +157,8 @@ export function ContactForm() {
                       <FormControl>
                         <Textarea
                           placeholder="Tell us about your vision..."
-                          className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors min-h-[150px] resize-none text-lg py-4"
+                          disabled={isSubmitting}
+                          className="bg-transparent border-0 border-b border-border rounded-none px-0 focus-visible:ring-0 focus-visible:border-accent transition-colors min-h-[150px] resize-none text-lg py-4 disabled:opacity-50"
                           {...field}
                         />
                       </FormControl>
@@ -136,9 +169,17 @@ export function ContactForm() {
                 <div className="pt-4 flex justify-center">
                   <Button
                     type="submit"
-                    className="bg-accent hover:bg-accent/90 text-white uppercase tracking-widest font-bold px-12 py-8 text-sm transition-all rounded-none"
+                    disabled={isSubmitting}
+                    className="bg-accent hover:bg-accent/90 text-white uppercase tracking-widest font-bold px-12 py-8 text-sm transition-all rounded-none min-w-[200px]"
                   >
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      "Send Message"
+                    )}
                   </Button>
                 </div>
               </form>
