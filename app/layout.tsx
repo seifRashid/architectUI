@@ -12,6 +12,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+// Architecture Studio - Stable Build
 export const metadata: Metadata = {
   title: "Architecture Studio | Designing Spaces That Shape How You Live",
   description: "Contemporary architecture studio focused on creating thoughtful, functional, and timeless environments for modern living.",
