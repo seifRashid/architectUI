@@ -72,13 +72,13 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:block"
       >
         <div className="w-[1px] h-20 bg-gradient-to-b from-white to-transparent" />
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }
