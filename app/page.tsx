@@ -6,6 +6,7 @@ import Portfolio from "@/components/Portfolio";
 import DesignPhilosophy from "@/components/DesignPhilosophy";
 import Process from "@/components/Process";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import { ContactForm } from "@/components/ContactForm";
 import ContactFooter from "@/components/ContactFooter";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <Portfolio />
         <Process />
         <WhyChooseUs />
+        <ContactForm />
         <ContactFooter />
       </div>
     </main>
