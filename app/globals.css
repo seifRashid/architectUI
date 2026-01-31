@@ -14,10 +14,10 @@
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  
+
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", system-ui, sans-serif;
-  
+
   --animate-parallax: parallax 10s linear infinite;
 }
 
@@ -31,6 +31,14 @@
   }
 }
 
+.dark {
+  --background: #121211;
+  --foreground: #f5f5f4;
+  --accent: #d4c3a3;
+  --muted: #1c1c1b;
+  --border: #2d2d2c;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -42,7 +50,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, .font-serif {
+h1,
+h2,
+h3,
+.font-serif {
   font-family: var(--font-serif);
 }
-
