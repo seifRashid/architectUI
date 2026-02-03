@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import SocialProof from "@/components/ui/SocialProof";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,14 +20,14 @@ export default function Hero() {
     <section
       ref={containerRef}
       id="home"
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center pt-20"
+      className="relative min-h-[100dvh] w-full overflow-hidden flex flex-col justify-center pt-24 md:pt-32"
     >
       {/* Parallax Background with Cinematic Zoom */}
-      <motion.div 
+      <motion.div
         initial={{ scale: 1.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-        style={{ y }} 
+        style={{ y }}
         className="absolute inset-0 z-0"
       >
         <motion.div style={{ scale }} className="h-full w-full">
@@ -48,12 +49,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-accent uppercase tracking-[0.4em] text-[10px] md:text-xs font-bold mb-8 block"
+            className="text-white/90 uppercase tracking-[0.4em] text-xs md:text-sm font-bold mb-4 block drop-shadow-md"
           >
             Est. 2024 — Architectural Excellence
           </motion.span>
-          
-          <div className="overflow-hidden mb-8">
+
+          <div className="overflow-hidden mb-4">
             <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -63,8 +64,8 @@ export default function Hero() {
               Designing Spaces
             </motion.h1>
           </div>
-          
-          <div className="overflow-hidden mb-12">
+
+          <div className="overflow-hidden mb-8">
             <motion.p
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -93,6 +94,8 @@ export default function Hero() {
               Our Philosophy
             </Button>
           </motion.div>
+
+          <SocialProof />
         </div>
       </div>
 
